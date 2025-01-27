@@ -12,8 +12,8 @@ const websiteContent = {
         { text: "Contact", href: "#contact" }
     ],
     hero: {
-        headline: "Empowering Businesses Through Data Science",
-        subheadline: "Delivering Tailored Solutions in Business Intelligence and Machine Learning",
+        headline: "Rok Tumpej",
+        subheadline: "Empowering Businesses Through Data Science",
         introduction: "Welcome! I'm Rok Tumpej, a Data Scientist and Business Intelligence Developer with a mission to transform data into actionable insights. My expertise spans creating data-driven dashboards, automating complex workflows, and applying machine learning to solve real-world business challenges. With a focus on collaboration and innovation, I deliver solutions that empower businesses to thrive in a data-centric world.",
         cta: {
             text: "Let's uncover the potential of your data",
@@ -119,7 +119,7 @@ const websiteContent = {
         ]
     },
     footer: {
-        copyright: " 2024 Rok Tumpej. All rights reserved."
+        copyright: "2025 Rok Tumpej. All rights reserved."
     }
 };
 

@@ -134,6 +134,33 @@ body {
     background-color: var(--background-light);
 }
 
+.about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+}
+
+.about-image {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.profile-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.profile-image:hover {
+    filter: grayscale(0%);
+}
+
 .about h2 {
     text-align: center;
     margin-bottom: 3rem;
@@ -151,6 +178,18 @@ body {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
     color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
 }
 
 /* Skills Section */
