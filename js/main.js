@@ -110,7 +110,6 @@ const websiteContent = {
         description: "Looking for innovative solutions in data science or business intelligence? Let's connect and explore how I can help your business succeed.",
         details: [
             { icon: "fa-envelope", text: "rok.tumpej@gmail.com" },
-            { icon: "fa-phone", text: "+31 65 798 1461" },
             { 
                 icon: "fa-linkedin", 
                 text: "LinkedIn Profile",

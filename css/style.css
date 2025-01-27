@@ -256,14 +256,14 @@ body {
 }
 
 .timeline-item {
-    margin-bottom: 3rem;
+    padding-bottom: 3rem;
     position: relative;
     padding-left: 2rem;
     border-left: 2px solid var(--secondary-color);
 }
 
 .timeline-item:last-child {
-    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .timeline-content {
@@ -277,7 +277,7 @@ body {
 .timeline-content:before {
     content: '';
     position: absolute;
-    left: -2.5rem;
+    left: -2.75rem;
     top: 1.5rem;
     width: 1rem;
     height: 1rem;
