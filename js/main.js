@@ -5,11 +5,12 @@ const websiteContent = {
         logo: ""
     },
     navigation: [
-        { text: "Home", href: "#home" },
-        { text: "About", href: "#about" },
-        { text: "Skills", href: "#skills" },
-        { text: "Experience", href: "#experience" },
-        { text: "Contact", href: "#contact" }
+        { text: "Home", href: "index.html#home" },
+        { text: "About", href: "index.html#about" },
+        { text: "Skills", href: "index.html#skills" },
+        { text: "Experience", href: "index.html#experience" },
+        { text: "Contact", href: "index.html#contact" },
+        { text: "Dashboard", href: "dashboard.html" }
     ],
     hero: {
         headline: "Rok Tumpej",
