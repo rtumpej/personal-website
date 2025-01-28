@@ -1,10 +1,10 @@
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #e74c3c;
-    --text-color: #2c3e50;
-    --text-light: #7f8c8d;
-    --background-light: #f8f9fa;
+    --primary-color: #1a472a;    /* Dark green */
+    --secondary-color: #2d5a27;  /* Slightly lighter green */
+    --accent-color: #5b8c5a;     /* Sage green */
+    --text-color: #2c3e50;       /* Dark blue-grey for text */
+    --text-light: #718096;       /* Muted grey */
+    --background-light: #f0f4f0; /* Light green-tinted background */
     --white: #ffffff;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
@@ -98,8 +98,8 @@ body {
     height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(52, 152, 219, 0.85)),
-                url('../images/background-digital-abstract.png');
+    background: linear-gradient(rgba(44, 71, 42, 0.45), rgba(18, 37, 16, 0.45)),
+                url('../images/background-digital-abstract-green.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -283,7 +283,7 @@ body {
     height: 1rem;
     background: var(--secondary-color);
     border-radius: 50%;
-    border: 3px solid var(--white);
+    border: 3px solid var(--background-light);
 }
 
 .timeline-content h3 {

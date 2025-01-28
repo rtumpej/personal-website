@@ -2,7 +2,7 @@
 const websiteContent = {
     meta: {
         title: "Rok Tumpej - Data Scientist & BI Developer",
-        logo: "RT"
+        logo: ""
     },
     navigation: [
         { text: "Home", href: "#home" },
@@ -109,11 +109,16 @@ const websiteContent = {
         subtitle: "Get in Touch",
         description: "Looking for innovative solutions in data science or business intelligence? Let's connect and explore how I can help your business succeed.",
         details: [
-            { icon: "fa-envelope", text: "rok.tumpej@gmail.com" },
+            { icon: "fa-solid fa-envelope", text: "rok.tumpej@gmail.com" },
             { 
-                icon: "fa-linkedin", 
+                icon: "fab fa-linkedin", 
                 text: "LinkedIn Profile",
                 href: "https://www.linkedin.com/in/rok-tumpej/"
+            },
+            {
+                icon: "fab fa-github",
+                text: "GitHub Profile",
+                href: "https://github.com/rtumpej"
             }
         ]
     },
@@ -193,8 +198,8 @@ function renderContact() {
         <p>${websiteContent.contact.description}</p>
         ${websiteContent.contact.details.map(detail => 
             detail.href 
-                ? `<p><i class="fas ${detail.icon}"></i> <a href="${detail.href}" target="_blank">${detail.text}</a></p>`
-                : `<p><i class="fas ${detail.icon}"></i> ${detail.text}</p>`
+                ? `<p><i class="${detail.icon}"></i> <a href="${detail.href}" target="_blank">${detail.text}</a></p>`
+                : `<p><i class="${detail.icon}"></i> ${detail.text}</p>`
         ).join('')}
     `;
 }
