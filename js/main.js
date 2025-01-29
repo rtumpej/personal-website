@@ -229,16 +229,36 @@ const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 
 menuToggle.addEventListener('click', () => {
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    navLinks.classList.toggle('active');
+});
+
+// Close mobile menu when clicking a link
+navLinks.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+        navLinks.classList.remove('active');
+    }
 });
 
 // Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        // Only prevent default if it's a hash link on the same page
+        const targetUrl = this.getAttribute('href');
+        const isHashLink = targetUrl.includes('#');
+        const isExternalLink = targetUrl.includes('://');
+        const isSamePage = !targetUrl.includes('.html') || 
+                          (window.location.pathname.endsWith('index.html') && targetUrl.startsWith('index.html'));
+
+        if (isHashLink && !isExternalLink && isSamePage) {
+            e.preventDefault();
+            const targetId = targetUrl.split('#')[1];
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
     });
 });
 
