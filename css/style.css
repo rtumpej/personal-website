@@ -411,6 +411,23 @@ footer {
     text-align: center;
 }
 
+/* Timeline mobile adjustments */
+@media screen and (max-width: 768px) {
+    .timeline-item {
+        padding-left: 1rem;
+    }
+    
+    .timeline-content {
+        padding: 1.5rem;
+    }
+    
+    .timeline-content:before {
+        left: -2.1rem;
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -462,7 +479,7 @@ footer {
     }
     
     .timeline-content:before {
-        left: -2rem;
+        left: -2.1rem;
     }
     
     .timeline-content {
@@ -475,11 +492,6 @@ footer {
     
     .timeline-content {
         max-width: 100%;
-        margin-left: 2rem;
-    }
-    
-    .timeline-item:nth-child(even) .timeline-content {
-        margin-left: 2rem;
     }
 }
 
