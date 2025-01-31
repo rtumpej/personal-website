@@ -742,7 +742,6 @@ footer {
     }
     
     .hero {
-        transform: rotate(90deg); /* Rotate background by 90 degrees on mobile */
         transform-origin: center center;
     }
 }
