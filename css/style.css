@@ -276,6 +276,7 @@ body {
 
 .company-logo {
     flex-shrink: 0;
+    margin: auto;
     width: 60px;
     height: 60px;
 }
@@ -644,7 +645,6 @@ footer {
         background: inherit;
         background-size: cover;
         background-position: center;
-        transform: rotate(90deg);
         transform-origin: center center;
         z-index: -1;
     }
@@ -682,6 +682,9 @@ footer {
     .timeline-content {
         padding: 1.5rem;
         max-width: 100%;
+    }
+    .timeline-content:before {
+        left: -2.2rem;
     }
     
     .timeline-header {
