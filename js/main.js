@@ -20,6 +20,7 @@ const websiteContent = {
         { text: "About", href: "index.html#about" },
         { text: "Skills", href: "index.html#skills" },
         { text: "Experience", href: "index.html#experience" },
+        { text: "Education", href: "index.html#education" },
         { text: "Contact", href: "index.html#contact" },
         { text: "Dashboard", href: "dashboard.html" }
     ],
@@ -147,6 +148,25 @@ const websiteContent = {
             }
         ]
     },
+    education: {
+        title: "Education",
+        items: [
+            {
+                period: "2017 - 2019",
+                degree: "MASTER OF SCIENCE",
+                field: "Mechanical Engineering - Computer Engineering Modelling",
+                institution: "University of Maribor",
+                icon: "fa-solid fa-graduation-cap"
+            },
+            {
+                period: "2014 - 2017",
+                degree: "BACHELOR OF SCIENCE",
+                field: "Mechanical Engineering - Engineering Design",
+                institution: "University of Maribor",
+                icon: "fa-solid fa-graduation-cap"
+            }
+        ]
+    },
     contact: {
         title: "Let's Collaborate",
         subtitle: "Get in Touch",
@@ -225,12 +245,43 @@ function renderExperience() {
         .map(item => `
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>${item.title}</h3>
-                    <h4>${item.company} | ${item.period}</h4>
-                    <img src="${item.logo}" alt="${item.company} logo" />
+                    <div class="timeline-header">
+                        <div class="company-logo">
+                            <img src="${item.logo}" alt="${item.company} logo" />
+                        </div>
+                        <div class="title-section">
+                            <h3>${item.title}</h3>
+                            <h4>${item.company} | ${item.period}</h4>
+                        </div>
+                    </div>
                     <ul>
                         ${item.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
                     </ul>
+                </div>
+            </div>
+        `)
+        .join('');
+}
+
+function renderEducation() {
+    const education = document.querySelector('#education');
+    education.querySelector('h2').textContent = websiteContent.education.title;
+    
+    education.querySelector('.timeline').innerHTML = websiteContent.education.items
+        .map(item => `
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="education-header">
+                        <div class="education-icon">
+                            <i class="${item.icon}"></i>
+                        </div>
+                        <div class="education-details">
+                            <div class="education-period">${item.period}</div>
+                            <h3>${item.degree}</h3>
+                            <h4>${item.field}</h4>
+                            <div class="institution">${item.institution}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         `)
@@ -285,6 +336,7 @@ function initializeWebsite() {
     renderAbout();
     renderSkills();
     renderExperience();
+    renderEducation();
     renderContact();
     renderFooter();
 }
