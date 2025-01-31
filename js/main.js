@@ -1,3 +1,14 @@
+// Email protection
+function encodeEmail(email) {
+    // Reverse the email and convert to base64
+    return btoa(email.split('').reverse().join(''));
+}
+
+function decodeEmail(encodedEmail) {
+    // Decode base64 and reverse back
+    return atob(encodedEmail).split('').reverse().join('');
+}
+
 // Website Content Configuration
 const websiteContent = {
     meta: {
@@ -22,14 +33,14 @@ const websiteContent = {
         }
     },
     about: {
-        title: "Your Partner in Data-Driven Success",
+        title: "Data Science & Business Intelligence",
         content: [
-            "With a strong foundation in engineering and years of experience across diverse industries, I specialize in helping businesses leverage their data for growth and efficiency. My background includes roles in multinational corporations and innovative startups, where I've developed business intelligence dashboards, automated workflows, and predictive models that drive smarter decision-making.",
+            "With a strong foundation in engineering and business intelligenceand years of experience across diverse industries, I specialize in helping businesses leverage their data for growth and efficiency. My background includes roles in multinational corporations and innovative startups, where I've developed business intelligence dashboards, automated workflows, and predictive models that drive smarter decision-making.",
             "I bring technical proficiency, a problem-solving mindset, and a passion for innovation to every project, ensuring that my solutions not only meet but exceed expectations. My goal is to bridge the gap between data and business, empowering stakeholders with clear, actionable insights."
         ]
     },
     skills: {
-        title: "What Sets Me Apart",
+        title: "Skills & Expertise",
         items: [
             {
                 icon: "fa-chart-line",
@@ -67,40 +78,71 @@ const websiteContent = {
         title: "My Professional Journey",
         items: [
             {
-                title: "Technical Business Analyst / Data Analyst",
-                company: "MUFG Bank (Europe) N.V., Amsterdam, NL",
-                period: "2019–2024",
+                title: "Technical Business Analyst",
+                company: "MUFG Bank (Europe) N.V.",
+                period: "Apr 2022 - Jun 2024",
+                logo: "images/mufg-logo-transp.png",
                 achievements: [
-                    "Developed and maintained BI dashboards for key departments",
-                    "Automated regulatory reporting and KYC workflows",
-                    "Collaborated with cross-functional teams to implement data-driven solutions"
+                    "Worked across Regulatory Reporting, Finance, Operations, and Front Office",
+                    "Automated regulatory reporting processes (Payment Statistics, CESOP, Integrity Risk Questionnaire)",
+                    "Developed customer and transactional data marts to improve the company's data landscape",
+                    "Resolved inefficiencies in legacy systems and collaborated with Business and IT teams"
                 ]
             },
             {
-                title: "Data Scientist / Algorithm Developer",
-                company: "Momo Medical B.V., Delft, NL",
-                period: "2019",
+                title: "Data Scientist",
+                company: "MUFG Bank (Europe) N.V.",
+                period: "Nov 2019 - Mar 2022",
+                logo: "images/mufg-logo-transp.png",
                 achievements: [
-                    "Created machine learning algorithms for real-time monitoring",
-                    "Delivered detailed documentation for regulatory requirements"
+                    "Focused on Compliance and Financial Crime risk mitigation using machine learning",
+                    "Tuned transaction monitoring tools and analyzed transactional and customer data",
+                    "Supported SIRA (Systematic Integrity Risk Analysis) and KYC processes",
+                    "Developed dashboards to provide key insights to stakeholders"
                 ]
             },
             {
-                title: "Simulation Engineer",
-                company: "AVL-AST d.o.o., Maribor, SI",
-                period: "2017–2021",
+                title: "Simulation Engineer / Software Services",
+                company: "AVL-AST d.o.o. (Freelance)",
+                period: "Oct 2020 - Dec 2021",
+                logo: "images/avl-logo-transp.png",
                 achievements: [
-                    "Developed innovative simulation methods for engines",
-                    "Conducted validation using advanced simulation tools"
+                    "Conducted research and development of simulation methods for internal combustion engines",
+                    "Designed and implemented new simulation methodologies into AVL's software framework",
+                    "Worked on verification and integration of new techniques into the company's core software products"
                 ]
             },
             {
-                title: "Freelance Data Scientist",
-                company: "Independent Project",
-                period: "2021–2022",
+                title: "Algorithm Developer",
+                company: "MOMO Medical B.V.",
+                period: "Sep 2019 - Nov 2019",
+                logo: "images/momo-logo-transp.png",
                 achievements: [
-                    "Designed algorithms for automated cryptocurrency trading",
-                    "Applied genetic algorithms and neural networks"
+                    "Developed core algorithms for embedded medical devices, including machine learning models",
+                    "Created internal tooling libraries and implemented C++ code for real-time execution",
+                    "Authored technical documentation and reports in compliance with CE standards"
+                ]
+            },
+            {
+                title: "Data Scientist (Intern)",
+                company: "MOMO Medical B.V.",
+                period: "Mar 2019 - Aug 2019",
+                logo: "images/momo-logo-transp.png",
+                achievements: [
+                    "Analyzed sensor data from embedded devices and built machine learning models",
+                    "Conducted time-series analysis and developed patient posture detection algorithms",
+                    "Utilized Python (Pandas, NumPy, Matplotlib, Seaborn, Sklearn) and C++ for model development"
+                ]
+            },
+            {
+                title: "Analysis Engineer",
+                company: "AVL-AST d.o.o.",
+                period: "Apr 2017 - Sep 2018",
+                logo: "images/avl-logo-transp.png",
+                achievements: [
+                    "Conducted simulations in the automotive industry (FEM, Strength, Dynamics, Fatigue analysis)",
+                    "Developed new approaches for numerical multi-body dynamic simulations",
+                    "Utilized Python programming and Abaqus for verification and validation of simulations"
                 ]
             }
         ]
@@ -110,7 +152,12 @@ const websiteContent = {
         subtitle: "Get in Touch",
         description: "Looking for innovative solutions in data science or business intelligence? Let's connect and explore how I can help your business succeed.",
         details: [
-            { icon: "fa-solid fa-envelope", text: "rok.tumpej@gmail.com" },
+            { 
+                icon: "fa-solid fa-envelope", 
+                encodedEmail: "bW9jLmxpYW1nQGplcG11dC5rb3I=",  // Encoded version of your email
+                text: "[Click to reveal email]",
+                isEmail: true
+            },
             { 
                 icon: "fab fa-linkedin", 
                 text: "LinkedIn Profile",
@@ -180,6 +227,7 @@ function renderExperience() {
                 <div class="timeline-content">
                     <h3>${item.title}</h3>
                     <h4>${item.company} | ${item.period}</h4>
+                    <img src="${item.logo}" alt="${item.company} logo" />
                     <ul>
                         ${item.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
                     </ul>
@@ -197,16 +245,36 @@ function renderContact() {
     const contactDetails = contact.querySelector('.contact-details');
     contactDetails.innerHTML = `
         <p>${websiteContent.contact.description}</p>
-        ${websiteContent.contact.details.map(detail => 
-            detail.href 
+        ${websiteContent.contact.details.map(detail => {
+            if (detail.isEmail) {
+                return `<p>
+                    <i class="${detail.icon}"></i> 
+                    <a href="#" class="protected-email" 
+                       data-encoded-email="${detail.encodedEmail}"
+                       onclick="handleEmailClick(event, this)">${detail.text}</a>
+                </p>`;
+            }
+            return detail.href 
                 ? `<p><i class="${detail.icon}"></i> <a href="${detail.href}" target="_blank">${detail.text}</a></p>`
-                : `<p><i class="${detail.icon}"></i> ${detail.text}</p>`
-        ).join('')}
+                : `<p><i class="${detail.icon}"></i> ${detail.text}</p>`;
+        }).join('')}
     `;
 }
 
 function renderFooter() {
     document.querySelector('footer p').textContent = websiteContent.footer.copyright;
+}
+
+// Email click handler
+function handleEmailClick(event, element) {
+    event.preventDefault();
+    const encodedEmail = element.getAttribute('data-encoded-email');
+    const decodedEmail = decodeEmail(encodedEmail);
+    element.textContent = decodedEmail;  // Show the email address
+    element.onclick = (e) => {  // Change click behavior to open email client
+        e.preventDefault();
+        window.location.href = `mailto:${decodedEmail}`;
+    };
 }
 
 // Initialize website
@@ -285,16 +353,49 @@ window.addEventListener('scroll', () => {
 });
 
 // Form handling
-const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(contactForm);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message')
-    };
-    console.log('Form submitted:', data);
-    contactForm.reset();
-    alert('Thank you for your message! I will get back to you soon.');
-});
+const form = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+if (form) {
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        
+        try {
+            const response = await fetch(this.action, {
+                method: this.method,
+                body: new FormData(this),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                formStatus.className = 'form-status success';
+                formStatus.textContent = 'Thank you for your message! I will get back to you soon.';
+                form.reset();
+            } else {
+                throw new Error(data.error || 'Form submission failed');
+            }
+        } catch (error) {
+            formStatus.className = 'form-status error';
+            formStatus.textContent = 'Oops! There was a problem sending your message. Please try again later.';
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send Message';
+            
+            // Scroll status into view
+            formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Hide status message after 5 seconds
+            setTimeout(() => {
+                formStatus.style.display = 'none';
+            }, 5000);
+        }
+    });
+}

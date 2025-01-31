@@ -265,6 +265,41 @@ body {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-content img {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+.timeline-content img:hover {
+    opacity: 1;
+}
+
+.timeline-content h3,
+.timeline-content h4 {
+    padding-right: 80px;
+}
+
+.timeline-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.timeline-content h4 {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
 }
 
 .timeline-content:before {
@@ -277,19 +312,6 @@ body {
     background: var(--secondary-color);
     border-radius: 50%;
     border: 3px solid var(--background-light);
-}
-
-.timeline-content h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-}
-
-.timeline-content h4 {
-    color: var(--text-light);
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-    font-weight: 500;
 }
 
 .timeline-content ul {
@@ -330,7 +352,7 @@ body {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 2fr;
     gap: 4rem;
     max-width: 1000px;
     margin: 0 auto;
@@ -366,36 +388,63 @@ body {
     color: var(--primary-color);
 }
 
-.contact-form .form-group {
+.contact-form {
+    width: 100%;
+    margin: 0;
+}
+
+.form-group {
     margin-bottom: 1.5rem;
 }
 
-.contact-form input,
-.contact-form textarea {
+.form-group input,
+.form-group textarea {
     width: 100%;
-    padding: 1rem;
+    padding: 0.8rem;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
+    border-radius: var(--border-radius);
+    font-size: var(--text-regular);
     transition: var(--transition);
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+.form-group input:focus,
+.form-group textarea:focus {
     outline: none;
-    border-color: var(--secondary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(26, 71, 42, 0.1);
 }
 
-.contact-form textarea {
-    height: 150px;
+.form-group textarea {
+    min-height: 150px;
     resize: vertical;
+}
+
+.form-status {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--border-radius);
+    display: none;
+}
+
+.form-status.success {
+    display: block;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-status.error {
+    display: block;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 1rem 2rem;
-    border-radius: 5px;
+    padding: 0.8rem 2rem;
+    border-radius: var(--border-radius);
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
@@ -404,13 +453,19 @@ body {
 }
 
 .btn.primary {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: var(--white);
 }
 
 .btn.primary:hover {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     transform: translateY(-2px);
+}
+
+.btn.primary:disabled {
+    background-color: var(--text-light);
+    cursor: not-allowed;
+    transform: none;
 }
 
 /* Footer */
@@ -461,6 +516,21 @@ footer {
         padding: 120px 20px;
     }
 
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        background-size: cover;
+        background-position: center;
+        transform: rotate(90deg);
+        transform-origin: center center;
+        z-index: -1;
+    }
+
     .hero h1 {
         font-size: var(--heading-large);
     }
@@ -496,6 +566,18 @@ footer {
         max-width: 100%;
     }
     
+    .timeline-content img {
+        width: 50px;
+        height: 50px;
+        top: 1.25rem;
+        right: 1.25rem;
+    }
+
+    .timeline-content h3,
+    .timeline-content h4 {
+        padding-right: 65px;
+    }
+    
     .timeline-content:before {
         left: -2.1rem;
         width: var(--timeline-dot-size);
@@ -515,5 +597,10 @@ footer {
     
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .hero {
+        transform: rotate(90deg); /* Rotate background by 90 degrees on mobile */
+        transform-origin: center center;
     }
 }
